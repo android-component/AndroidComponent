@@ -1,1 +1,1 @@
-include ':app', ':lib-base', ':comp-featureA', ':comp-featureB'
+include ':app', ':lib-base', ':comp-featureA', ':comp-featureB', ':comp-sdk'

@@ -33,14 +33,11 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
     // 组件依赖配置
-    println IsBuildMudle.toBoolean()
-    if (!IsBuildMudle.toBoolean()) {
-        implementation project(':comp-featureA')
-        implementation project(':comp-featureB')
+    if (!IsBuildMudle.toBoolean() && !ISBuildSdk.toBoolean()) {
+//        implementation project(':comp-featureA')
+//        implementation project(':comp-featureB')
+        implementation project(':comp-sdk')
     } else {
         implementation project(':lib-base')
     }
-
-    // 其他依赖
-    implementation 'com.github.kylingo:quickly:1.0.0'
 }

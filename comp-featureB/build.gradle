@@ -1,5 +1,4 @@
-println IsBuildMudle.toBoolean()
-if (IsBuildMudle.toBoolean()) {
+if (IsBuildMudle.toBoolean() && !ISBuildSdk.toBoolean()) {
     apply plugin: 'com.android.application'
 } else {
     apply plugin: 'com.android.library'
@@ -9,7 +8,7 @@ android {
     compileSdkVersion 28
 
     defaultConfig {
-        if (IsBuildMudle.toBoolean()) {
+        if (IsBuildMudle.toBoolean() && !ISBuildSdk.toBoolean()) {
             applicationId "com.android.component.featureB"
         }
         minSdkVersion 15
@@ -35,7 +34,7 @@ android {
 
     sourceSets {
         main {
-            if (IsBuildMudle.toBoolean()) {
+            if (IsBuildMudle.toBoolean() && !ISBuildSdk.toBoolean()) {
                 manifest.srcFile 'src/main/runAlone/AndroidManifest.xml'
             } else {
                 manifest.srcFile 'src/main/AndroidManifest.xml'
