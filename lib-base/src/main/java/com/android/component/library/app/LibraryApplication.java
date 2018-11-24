@@ -2,8 +2,7 @@ package com.android.component.library.app;
 
 import android.app.Application;
 
-import com.alibaba.android.arouter.launcher.ARouter;
-import com.android.component.library.BuildConfig;
+import com.android.component.library.router.RouterManager;
 
 /**
  * @author kylingo
@@ -19,16 +18,8 @@ public class LibraryApplication {
         }
 
         isInit = true;
-        initARouter(application);
+        RouterManager.init(application);
     }
 
-    private static void initARouter(Application application) {
-        // ARouter onCreate
-        if (BuildConfig.DEBUG) {
-            ARouter.openDebug();
-            ARouter.openLog();
-            ARouter.printStackTrace();
-        }
-        ARouter.init(application);
-    }
+
 }

@@ -1,6 +1,6 @@
 package com.android.component;
 
-import com.alibaba.android.arouter.launcher.ARouter;
+import com.android.component.library.router.RouterManager;
 import com.me.ui.library.sample.SampleFragment;
 
 import java.util.List;
@@ -21,10 +21,10 @@ public class MainFragment extends SampleFragment<String> {
     protected void onClickItem(String item) {
         switch (item) {
             case "FeatureA":
-                ARouter.getInstance().build("/a/featureA").navigation();
+                RouterManager.navigationFeatureA();
                 break;
             case "FeatureB":
-                ARouter.getInstance().build("/b/featureB").navigation();
+                RouterManager.navigationFeatureB();
                 break;
         }
     }

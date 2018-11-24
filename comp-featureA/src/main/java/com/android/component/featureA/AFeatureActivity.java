@@ -1,19 +1,18 @@
 package com.android.component.featureA;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
-import com.alibaba.android.arouter.launcher.ARouter;
+import com.android.component.library.router.RouterScheme;
 
-@Route(path = "/a/featureA")
+@Route(path = RouterScheme.PAGE.FEATURE_A)
 public class AFeatureActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feature_a);
-        ARouter.getInstance().inject(this);
         setTitle(R.string.a_feature_name);
     }
 }
