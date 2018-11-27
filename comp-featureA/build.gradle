@@ -60,5 +60,6 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
     api project(':lib-base')
+    api project(':libp-image')
     annotationProcessor 'com.alibaba:arouter-compiler:1.2.1'
 }

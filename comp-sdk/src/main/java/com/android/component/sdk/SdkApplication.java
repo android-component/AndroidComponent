@@ -2,6 +2,7 @@ package com.android.component.sdk;
 
 import android.app.Application;
 
+import com.android.component.image.ImageApplication;
 import com.android.component.library.app.LibraryApplication;
 
 /**
@@ -18,5 +19,6 @@ public class SdkApplication extends Application {
 
     public static void init(Application application) {
         LibraryApplication.onCreate(application);
+        ImageApplication.onCreate(application);
     }
 }
