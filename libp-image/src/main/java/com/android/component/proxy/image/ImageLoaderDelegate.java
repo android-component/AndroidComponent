@@ -1,4 +1,4 @@
-package com.android.component.provider;
+package com.android.component.proxy.image;
 
 import android.widget.ImageView;
 

@@ -4,7 +4,6 @@ import android.content.Context;
 import android.widget.ImageView;
 
 import com.android.component.image.ImageDrawView;
-import com.android.component.provider.ImageLoaderDelegate;
 
 /**
  * @author kylingo
