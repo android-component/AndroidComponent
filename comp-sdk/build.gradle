@@ -1,4 +1,4 @@
-if (ISBuildSdk.toBoolean()) {
+if (isBuildSdk.toBoolean()) {
     apply plugin: 'com.android.application'
 } else {
     apply plugin: 'com.android.library'
@@ -9,7 +9,7 @@ android {
     compileSdkVersion 28
 
     defaultConfig {
-        if (ISBuildSdk.toBoolean()) {
+        if (isBuildSdk.toBoolean()) {
             applicationId "com.android.component.sdk"
         }
         minSdkVersion 15
@@ -30,7 +30,7 @@ android {
 
     sourceSets {
         main {
-            if (ISBuildSdk.toBoolean()) {
+            if (isBuildSdk.toBoolean()) {
                 manifest.srcFile 'src/main/runAlone/AndroidManifest.xml'
             } else {
                 manifest.srcFile 'src/main/AndroidManifest.xml'
@@ -53,10 +53,10 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
-    if (ISBuildSdk.toBoolean()) {
+    if (isBuildSdk.toBoolean()) {
         implementation project(':comp-featureA')
         implementation project(':comp-featureB')
-    } else if (IsBuildMudle.toBoolean()) {
+    } else if (isBuildMudle.toBoolean()) {
         implementation project(':lib-base')
     } else {
         api project(':comp-featureA')
