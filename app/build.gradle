@@ -24,6 +24,12 @@ android {
     }
 }
 
+repositories {
+    flatDir{
+        dirs 'libs'
+    }
+}
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.android.support:appcompat-v7:28.0.0'
@@ -34,9 +40,17 @@ dependencies {
 
     // 组件依赖配置
     if (!IsBuildMudle.toBoolean() && !ISBuildSdk.toBoolean()) {
+        // 直接依赖组件
 //        implementation project(':comp-featureA')
 //        implementation project(':comp-featureB')
+
+        // 依赖sdk
         implementation project(':comp-sdk')
+
+        // 依赖aar
+//        implementation(name: 'comp-sdk-release', ext: 'aar') {
+//            transitive = true
+//        }
     } else {
         implementation project(':lib-base')
     }

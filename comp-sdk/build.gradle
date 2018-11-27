@@ -36,6 +36,11 @@ android {
             }
         }
     }
+
+    lintOptions {
+        abortOnError false
+    }
+
 }
 
 dependencies {
@@ -59,3 +64,13 @@ dependencies {
 
 //    annotationProcessor 'com.alibaba:arouter-compiler:1.2.1'
 }
+
+task buildAar(type: Copy) {
+    delete 'build/libs/comp-sdk.aar'
+    from('build/outputs/aar/comp-sdk-release.aar')
+    into('build/outputs/')
+    include('comp-sdk-release.aar.jar')
+    rename ('comp-sdk-release.aar.jar', 'comp-sdk.aar')
+}
+
+buildAar.dependsOn(build)
