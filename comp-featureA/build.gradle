@@ -45,6 +45,10 @@ android {
     }
 
 //    resourcePrefix "a_"
+
+    lintOptions {
+        abortOnError false
+    }
 }
 
 dependencies {

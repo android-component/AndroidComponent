@@ -55,3 +55,6 @@ app/app.iml
 # native
 *.o
 *.o.d
+
+# upload bintray
+upload

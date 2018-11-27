@@ -3,6 +3,7 @@ if (ISBuildSdk.toBoolean()) {
 } else {
     apply plugin: 'com.android.library'
 }
+apply plugin: 'com.novoda.bintray-release'
 
 android {
     compileSdkVersion 28
@@ -74,3 +75,12 @@ task buildAar(type: Copy) {
 }
 
 buildAar.dependsOn(build)
+
+publish {
+    userOrg = 'kylingo'
+    groupId = 'com.github.kylingo'
+    artifactId = 'component-sdk'
+    publishVersion = '1.0.0'
+    desc = 'Android component sdk library'
+    website = 'https://github.com/kylingo/AndroidComponent'
+}
