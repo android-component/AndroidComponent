@@ -5,9 +5,7 @@
     <application
         android:name=".BFeatureApplication"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
         android:label="@string/b_feature_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/b_AppTheme">
         <activity

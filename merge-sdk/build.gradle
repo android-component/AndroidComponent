@@ -1,5 +1,6 @@
 apply plugin: 'com.android.library'
-apply from: '../fat-aar.gradle'
+//apply from: '../fat-aar.gradle'
+apply plugin: 'me.lucas.fat-aar'
 
 android {
     compileSdkVersion 28
@@ -28,16 +29,22 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation 'com.android.support:appcompat-v7:28.0.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
-    embedded project(':comp-sdk')
-    embedded project(':comp-featureA')
-    embedded project(':comp-featureB')
-    embedded project(':prov-common')
-    embedded project(':libp-image')
-    embedded project(':lib-image')
-    embedded project(':lib-base')
+    embed project(path: ':comp-sdk', configuration: 'default')
+    embed project(path: ':comp-featureA', configuration: 'default')
+    embed project(path: ':comp-featureB', configuration: 'default')
+    embed project(path: ':prov-common', configuration: 'default')
+    embed project(path: ':libp-image', configuration: 'default')
+    embed project(path: ':lib-image', configuration: 'default')
+    embed project(path: ':lib-base', configuration: 'default')
+
+//    implementation project(':comp-featureA')
+//    implementation project(':comp-featureB')
+}
+
+fatLibraryExt {
+    enable true
 }

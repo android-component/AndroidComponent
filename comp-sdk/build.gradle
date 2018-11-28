@@ -3,8 +3,6 @@ if (isBuildSdk.toBoolean()) {
 } else {
     apply plugin: 'com.android.library'
 }
-apply plugin: 'com.novoda.bintray-release'
-apply plugin: 'com.mobbeel.plugin'
 
 android {
     compileSdkVersion 28
@@ -66,27 +64,3 @@ dependencies {
 
 //    annotationProcessor 'com.alibaba:arouter-compiler:1.2.1'
 }
-
-task buildAar(type: Copy) {
-    delete 'build/libs/comp-sdk.aar'
-    from('build/outputs/aar/comp-sdk-release.aar')
-    into('build/outputs/')
-    include('comp-sdk-release.aar.jar')
-    rename ('comp-sdk-release.aar.jar', 'comp-sdk.aar')
-}
-
-buildAar.dependsOn(build)
-
-publish {
-    userOrg = 'kylingo'
-    groupId = 'com.github.kylingo'
-    artifactId = 'component-sdk'
-    publishVersion = '1.0.0'
-    desc = 'Android component sdk library'
-    website = 'https://github.com/kylingo/AndroidComponent'
-}
-
-//aarPlugin {
-//    includeAllInnerDependencies false
-//    packagesToInclude = ["mobbeel"]
-//}

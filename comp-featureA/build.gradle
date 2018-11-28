@@ -3,7 +3,6 @@ if (isBuildMudle.toBoolean() && !isBuildSdk.toBoolean()) {
 } else {
     apply plugin: 'com.android.library'
 }
-apply plugin: 'com.mobbeel.plugin'
 
 android {
     compileSdkVersion 28
