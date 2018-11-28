@@ -6,7 +6,7 @@
         android:allowBackup="true"
         android:supportsRtl="true">
         <activity
-            android:name=".AFeatureActivity"
+            android:name="com.android.component.featureA.AFeatureActivity"
             android:screenOrientation="portrait">
 
         </activity>
