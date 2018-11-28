@@ -3,10 +3,11 @@ if (isBuildSdk.toBoolean()) {
 } else {
     apply plugin: 'com.android.library'
 }
+apply plugin: 'com.novoda.bintray-release'
+apply plugin: 'com.mobbeel.plugin'
 
 android {
     compileSdkVersion 28
-    buildToolsVersion "28.0.3"
 
     defaultConfig {
         if (isBuildSdk.toBoolean()) {
@@ -45,23 +46,47 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    compile 'com.android.support:appcompat-v7:27.1.1'
-    compile 'com.android.support.constraint:constraint-layout:1.1.3'
-    testCompile 'junit:junit:4.12'
-    androidTestCompile 'com.android.support.test:runner:1.0.2'
-    androidTestCompile 'com.android.support.test.espresso:espresso-core:3.0.2'
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
-//    if (isBuildSdk.toBoolean()) {
-//        compile project(':comp-featureA')
-//        compile project(':comp-featureB')
-//    } else if (isBuildMudle.toBoolean()) {
-//        compile project(':lib-base')
-//    } else {
-        compile project(':comp-featureA')
-        compile project(':comp-featureB')
-//    }
+    if (isBuildSdk.toBoolean()) {
+        implementation project(':comp-featureA')
+        implementation project(':comp-featureB')
+    } else if (isBuildMudle.toBoolean()) {
+        implementation project(':lib-base')
+    } else {
+        api project(':comp-featureA')
+        api project(':comp-featureB')
+    }
 
 //    annotationProcessor 'com.alibaba:arouter-compiler:1.2.1'
 }
+
+task buildAar(type: Copy) {
+    delete 'build/libs/comp-sdk.aar'
+    from('build/outputs/aar/comp-sdk-release.aar')
+    into('build/outputs/')
+    include('comp-sdk-release.aar.jar')
+    rename ('comp-sdk-release.aar.jar', 'comp-sdk.aar')
+}
+
+buildAar.dependsOn(build)
+
+publish {
+    userOrg = 'kylingo'
+    groupId = 'com.github.kylingo'
+    artifactId = 'component-sdk'
+    publishVersion = '1.0.0'
+    desc = 'Android component sdk library'
+    website = 'https://github.com/kylingo/AndroidComponent'
+}
+
+//aarPlugin {
+//    includeAllInnerDependencies false
+//    packagesToInclude = ["mobbeel"]
+//}

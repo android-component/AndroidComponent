@@ -4,8 +4,10 @@
           xmlns:tools="http://schemas.android.com/tools">
 
     <application
+        android:name=".SdkApplication"
         android:allowBackup="true"
-        android:supportsRtl="true">
+        android:supportsRtl="true"
+        tools:replace="android:name">
         <activity android:name=".SdkActivity">
         </activity>
     </application>

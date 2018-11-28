@@ -1,8 +1,10 @@
 apply plugin: 'com.android.library'
+apply plugin: 'com.mobbeel.plugin'
 
 android {
     compileSdkVersion 28
-    buildToolsVersion "28.0.3"
+
+
 
     defaultConfig {
         minSdkVersion 15
@@ -24,15 +26,15 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-//    compile 'com.android.support:appcompat-v7:28.0.0'
-    testCompile 'junit:junit:4.12'
-    androidTestCompile 'com.android.support.test:runner:1.0.2'
-    androidTestCompile 'com.android.support.test.espresso:espresso-core:3.0.2'
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
     // Fresco image library
-    compile 'com.facebook.fresco:fresco:1.11.0'
-    compile 'com.facebook.fresco:animated-gif:1.11.0'
-    compile 'com.facebook.fresco:animated-webp:1.11.0'
+    api 'com.facebook.fresco:fresco:1.11.0'
+    api 'com.facebook.fresco:animated-gif:1.11.0'
+    api 'com.facebook.fresco:animated-webp:1.11.0'
 }
