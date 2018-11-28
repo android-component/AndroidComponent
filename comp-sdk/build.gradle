@@ -4,6 +4,7 @@ if (isBuildSdk.toBoolean()) {
     apply plugin: 'com.android.library'
 }
 apply plugin: 'com.novoda.bintray-release'
+apply plugin: 'com.mobbeel.plugin'
 
 android {
     compileSdkVersion 28
@@ -84,3 +85,8 @@ publish {
     desc = 'Android component sdk library'
     website = 'https://github.com/kylingo/AndroidComponent'
 }
+
+//aarPlugin {
+//    includeAllInnerDependencies false
+//    packagesToInclude = ["mobbeel"]
+//}

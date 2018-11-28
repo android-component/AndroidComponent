@@ -10,7 +10,7 @@
         android:label="@string/a_feature_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
+        android:theme="@style/a_AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
         <activity
             android:name=".AFeatureActivity"

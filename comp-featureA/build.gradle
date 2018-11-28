@@ -3,6 +3,7 @@ if (isBuildMudle.toBoolean() && !isBuildSdk.toBoolean()) {
 } else {
     apply plugin: 'com.android.library'
 }
+apply plugin: 'com.mobbeel.plugin'
 
 android {
     compileSdkVersion 28
@@ -63,3 +64,8 @@ dependencies {
     api project(':libp-image')
     annotationProcessor 'com.alibaba:arouter-compiler:1.2.1'
 }
+
+//aarPlugin {
+//    includeAllInnerDependencies false
+//    packagesToInclude = ["mobbeel"]
+//}

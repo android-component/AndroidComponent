@@ -7,7 +7,6 @@
         android:name=".SdkApplication"
         android:allowBackup="true"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
         tools:replace="android:name">
         <activity android:name=".SdkActivity">
         </activity>

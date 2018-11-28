@@ -10,7 +10,7 @@
         android:label="@string/sdk_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
+        android:theme="@style/a_AppTheme"
         tools:ignore="GoogleAppIndexingWarning"
         tools:replace="android:name,android:label">
         <activity android:name=".SdkActivity">
