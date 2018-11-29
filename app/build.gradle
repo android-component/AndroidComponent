@@ -61,13 +61,13 @@ dependencies {
     }
 
     // 第三方库
-    compile 'com.github.kylingo:quickly:1.0.7'
+    implementation 'com.github.kylingo:quickly:1.0.7'
 
     // ARouter
-    compile 'com.alibaba:arouter-api:1.4.0'
+    implementation 'com.alibaba:arouter-api:1.4.0'
 
     // Fresco image library
-    compile 'com.facebook.fresco:fresco:1.11.0'
-    compile 'com.facebook.fresco:animated-gif:1.11.0'
-    compile 'com.facebook.fresco:animated-webp:1.11.0'
+    implementation 'com.facebook.fresco:fresco:1.11.0'
+    implementation 'com.facebook.fresco:animated-gif:1.11.0'
+    implementation 'com.facebook.fresco:animated-webp:1.11.0'
 }
