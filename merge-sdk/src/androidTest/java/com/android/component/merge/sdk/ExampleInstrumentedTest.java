@@ -1,4 +1,4 @@
-package com.component.merge.sdk;
+package com.android.component.merge.sdk;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
