@@ -54,7 +54,7 @@ dependencies {
 //        implementation project(':comp-sdk')
 //
         // 依赖aar
-        implementation(name: 'merge-sdk-debug-1.0.0', ext: 'aar')
+        implementation(name: 'merge-sdk-debug', ext: 'aar')
     } else {
         implementation project(':lib-base')
         implementation project(':libp-image')
