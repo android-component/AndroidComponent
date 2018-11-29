@@ -17,3 +17,13 @@ Android组件化的过程和文档记录
 - api 参与编译和打包，都可以访问
 - compileOnly 只在编译时有效，不会参与打包
 - runtimeOnly 只参与打包，编译时不会参与，适合做代码隔离
+
+## 打包AAR方案选择
+- [android-fat-aar](https://github.com/adwiv/android-fat-aar)，二三年前更新过，作者不再维护，脚本无法正常运行。
+- [merge-module](https://github.com/byhook/merge-module)，基于fat-aar修改，作者最近半年有更新，项目需求也是对外输出sdk。
+    - 优点，可以打包依赖AAR中所有资源，满足业务需求。
+    - 缺点，只支持android gradle 2.2.3，gradle wrap 3.5，不满足高版本gradle需求。
+    - 测试代码在develop_fat分支
+- [fat-aar](https://github.com/NicoToast/fat-aar)，作者半年前更新过
+    - 优点，支持android gradle 3.0.1的版本，gradle wrap 4.4
+    - 缺点，子AAR的资源ID，没有打包进去
