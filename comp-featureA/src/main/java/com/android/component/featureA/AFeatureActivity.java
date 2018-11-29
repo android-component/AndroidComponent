@@ -11,7 +11,8 @@ public class AFeatureActivity extends SampleActivity {
 
     @Override
     protected String getSampleTitle() {
-        return getString(R.string.a_feature_name);
+//        return StringUtils.getString(this, R.string.a_feature_name);
+        return "AFeature";
     }
 
     @Override
