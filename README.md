@@ -1,4 +1,4 @@
-## AndroidComponent
+# AndroidComponent
 Android组件化的过程和文档记录
 
 ## 组件化需解决的问题
@@ -31,5 +31,9 @@ Android组件化的过程和文档记录
     - 优点，可以打包aar和资源id
     - 缺点，无法打包Manifest文件，layout文件
     - 测试代码在develop_fataar_plugin分支
+- all-in-one
+    - 简单粗暴办法，将所有子aar拷贝到一个项目中，使用系统默认的aar打包方式，还是只能生成当前module的aar，不会包含子aar。
+    - 不能解决将所有aar打包到一个aar的问题
 
-## [Issue](./Issue.md)
+## Issue
+[问题列表]((./Issue.md))
