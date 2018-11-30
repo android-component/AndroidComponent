@@ -28,5 +28,8 @@ Android组件化的过程和文档记录
     - 优点，支持android gradle 3.0.1的版本，gradle wrap 4.4
     - 缺点，子AAR的资源ID打进去了，但是打包到apk后，子AAR的资源ID变了，运行时找不到
 - [fataar-gradle-plugin](https://github.com/Mobbeel/fataar-gradle-plugin)
-    - 优点
-    - 缺点，无法打包Manifest文件
+    - 优点，可以打包aar和资源id
+    - 缺点，无法打包Manifest文件，layout文件
+    - 测试代码在develop_fataar_plugin分支
+
+## [Issue](./Issue.md)
