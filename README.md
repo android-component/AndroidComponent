@@ -19,6 +19,8 @@ Android组件化的过程和文档记录
 - runtimeOnly 只参与打包，编译时不会参与，适合做代码隔离
 
 ## 打包AAR方案选择
+目标：将多个module的aar或者jar，打包到一个aar。
+
 - [android-fat-aar](https://github.com/adwiv/android-fat-aar)，二三年前更新过，作者不再维护，脚本无法正常运行。
 - [merge-module](https://github.com/byhook/merge-module)，基于fat-aar修改，作者最近半年有更新，项目需求也是对外输出sdk。
     - 优点，可以打包依赖AAR中所有资源，满足业务需求。
@@ -32,7 +34,7 @@ Android组件化的过程和文档记录
     - 缺点，无法打包Manifest文件，layout文件
     - 测试代码在develop_fataar_plugin分支
 - all-in-one
-    - 简单粗暴办法，将所有子aar拷贝到一个项目中，使用系统默认的aar打包方式，还是只能生成当前module的aar，不会包含子aar。
+    - 简单粗暴办法，将所有子aar拷贝到一个项目中，使用默认的aar打包方式，还是只能生成当前module的aar，不会包含子aar。
     - 不能解决将所有aar打包到一个aar的问题
 
 ## Issue
