@@ -4,5 +4,5 @@ dependencies {
     api 'com.alibaba:arouter-api:1.4.0'
 
     // thirdparty library
-    api 'com.github.kylingo:quickly:1.0.7'
+    api 'com.github.kylingo:quickly:1.0.8'
 }

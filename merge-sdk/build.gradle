@@ -36,16 +36,14 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
-    api project(path: ':comp-sdk')
     api project(path: ':comp-featureA')
     api project(path: ':comp-featureB')
-    api project(path: ':prov-common')
     api project(path: ':libp-image')
     api project(path: ':lib-image')
     api project(path: ':lib-base')
 }
 
-//aarPlugin {
-//    includeAllInnerDependencies false
+aarPlugin {
+    includeAllInnerDependencies true
 //    packagesToInclude = ["component"]
-//}
+}

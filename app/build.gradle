@@ -50,18 +50,15 @@ dependencies {
 //        implementation project(':comp-featureA')
 //        implementation project(':comp-featureB')
 
-        // 依赖sdk
-//        implementation project(':comp-sdk')
-//
         // 依赖aar
-        implementation(name: 'merge-sdk-debug', ext: 'aar')
+        implementation(name: 'merge-sdk-release', ext: 'aar')
     } else {
         implementation project(':lib-base')
         implementation project(':libp-image')
     }
 
     // 第三方库
-    implementation 'com.github.kylingo:quickly:1.0.7'
+    implementation 'com.github.kylingo:quickly:1.0.8'
 
     // ARouter
     implementation 'com.alibaba:arouter-api:1.4.0'

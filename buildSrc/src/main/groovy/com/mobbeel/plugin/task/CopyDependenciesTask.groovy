@@ -37,8 +37,13 @@ class CopyDependenciesTask extends DefaultTask {
             }
 
             project.copy {
-                from("${project.projectDir.path}/build/intermediates/res/symbol-table-with-package/${variantName}") {
-                    include "package-aware-r.txt"
+//                from("${project.projectDir.path}/build/intermediates/res/symbol-table-with-package/${variantName}") {
+//                    include "package-aware-r.txt"
+//                    rename '(.*)', 'R.txt'
+//                }
+//                String filePath = "${project.projectDir.path}/build/intermediates/symbols/${variantName}/R.txt"
+                from("${project.projectDir.path}/build/intermediates/symbols/${variantName}/") {
+                    include "R.txt"
                     rename '(.*)', 'R.txt'
                 }
 
@@ -49,7 +54,7 @@ class CopyDependenciesTask extends DefaultTask {
 
                 into "${temporaryDir.path}/${variantName}"
             }
-            processRsAwareFile(new File("${temporaryDir.path}/${variantName}/R.txt"))
+//            processRsAwareFile(new File("${temporaryDir.path}/${variantName}/R.txt"))
 
             project.copy {
                 from "${project.projectDir.path}/build/intermediates/packaged_res/${variantName}"
@@ -277,6 +282,19 @@ class CopyDependenciesTask extends DefaultTask {
 
                     raf.seek(offset + 1)
                 } else {
+                    println 'There is something error-----------------'
+                    if (line != null) {
+                        println line
+                        println '--------------------'
+                    }
+                    if (queryLine != null) {
+                        println queryLine
+                    }
+                    println '--------------------'
+
+                    println resAwareFile.getAbsoluteFile().getAbsolutePath()
+                    println '--------------------'
+
                     raf.close()
                     throw new IllegalStateException("R.txt cannot generate")
                 }

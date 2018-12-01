@@ -5,7 +5,6 @@ import android.support.v4.app.Fragment;
 
 import com.android.component.library.util.LogUtils;
 import com.android.component.library.util.ToastUtils;
-import com.android.component.sdk.SdkFragment;
 import com.me.ui.library.sample.SampleActivity;
 
 public class MainActivity extends SampleActivity {
@@ -17,7 +16,7 @@ public class MainActivity extends SampleActivity {
 
     @Override
     protected Fragment getSampleFragment() {
-        return new SdkFragment();
+        return new MainFragment();
     }
 
     @Override
