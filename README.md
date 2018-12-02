@@ -36,7 +36,7 @@ Android组件化的过程和文档记录
 - all-in-one
     - 简单粗暴办法，将所有子aar拷贝到一个项目中，使用默认的aar打包方式，还是只能生成当前module的aar，不会包含子aar。
     - 不能解决将所有aar打包到一个aar的问题
-综述，建议使用[fataar-gradle-plugin](https://github.com/Mobbeel/fataar-gradle-plugin)进行修改，毕竟是支持高版本的gradle，
+- 综述，建议使用[fataar-gradle-plugin](https://github.com/Mobbeel/fataar-gradle-plugin)进行修改，毕竟是支持高版本的gradle，
 满足编译速度和业务需求。
 
 ## Issue
