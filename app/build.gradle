@@ -44,17 +44,12 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
-    // 组件依赖配置
-    if (!isBuildMudle.toBoolean() && !isBuildSdk.toBoolean()) {
-        // 直接依赖组件
-//        implementation project(':comp-featureA')
-//        implementation project(':comp-featureB')
-
-        // 依赖aar
-        implementation(name: 'merge-sdk-release', ext: 'aar')
+    if (isBuildSdk.toBoolean()) {
+        println "build sdk --------------> aar"
+        implementation fileTree(dir: 'libs', include: ['*.aar'])
     } else {
-        implementation project(':lib-base')
-        implementation project(':libp-image')
+        implementation project(':comp-featureA')
+        implementation project(':comp-featureB')
     }
 
     // 第三方库

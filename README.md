@@ -29,13 +29,15 @@ Android组件化的过程和文档记录
 - [fat-aar](https://github.com/NicoToast/fat-aar)，作者半年前更新过
     - 优点，支持android gradle 3.0.1的版本，gradle wrap 4.4
     - 缺点，子AAR的资源ID打进去了，但是打包到apk后，子AAR的资源ID变了，运行时找不到
-- [fataar-gradle-plugin](https://github.com/Mobbeel/fataar-gradle-plugin)
-    - 优点，可以打包aar和资源id
-    - 缺点，无法打包Manifest文件，layout文件
+- [fataar-gradle-plugin](https://github.com/Mobbeel/fataar-gradle-plugin)，作者一个月前更新过，Mobbeel公司开源的
+    - 优点，支持3.1和3.2的gradle版本，可以打包aar和资源id，满足业务需求
+    - 缺点，无法打包Manifest文件，需要增加patch修复问题
     - 测试代码在develop_fataar_plugin分支
 - all-in-one
     - 简单粗暴办法，将所有子aar拷贝到一个项目中，使用默认的aar打包方式，还是只能生成当前module的aar，不会包含子aar。
     - 不能解决将所有aar打包到一个aar的问题
+综述，建议使用[fataar-gradle-plugin](https://github.com/Mobbeel/fataar-gradle-plugin)进行修改，毕竟是支持高版本的gradle，
+满足编译速度和业务需求。
 
 ## Issue
 [问题列表](./Issue.md)

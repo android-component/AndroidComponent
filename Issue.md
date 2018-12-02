@@ -6,3 +6,4 @@
 
 ## fataar-gradle-plugin
 java.lang.NoSuchFieldError: No field abc_action_bar_view_list_nav_layout of type I in class Lcom/android/component/merge/sdk/R$layout; or its superclasses (declaration of 'com.android.component.merge.sdk.R$layout' appears in /data/app/com.android.component-1/base.apk)
+解决方案：这个是aar打包了support包的问题，用compileOnly即可

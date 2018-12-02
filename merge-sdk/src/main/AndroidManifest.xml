@@ -1,2 +1,14 @@
 <manifest package="com.android.component.merge.sdk"
-          xmlns:android="http://schemas.android.com/apk/res/android"/>
+          xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <application>
+        <activity
+            android:name="com.android.component.featureA.AFeatureActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity
+            android:name="com.android.component.featureB.BFeatureActivity"
+            android:screenOrientation="portrait">
+        </activity>
+    </application>
+</manifest>
