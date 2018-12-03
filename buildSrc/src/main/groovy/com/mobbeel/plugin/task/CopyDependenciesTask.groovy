@@ -124,7 +124,7 @@ class CopyDependenciesTask extends DefaultTask {
                     println "Internal java dependency detected -> " + dependency.name
                     archiveName = dependencyProject.jar.archiveName
                     dependencyPath = "${dependencyProject.buildDir}/libs/"
-                } else {
+                } else if (dependencyProject.plugins.hasPlugin('com.android.library')) {
                     println "Internal android dependency detected -> " + dependency.name
                     dependencyProject.android.libraryVariants.all {
                         if (it.name == variantName) {
@@ -132,6 +132,11 @@ class CopyDependenciesTask extends DefaultTask {
                         }
                     }
                     dependencyPath = "${dependencyProject.buildDir}/outputs/aar/"
+                } else {
+                    println "Internal aar dependency detected -> " + dependency.name
+                    archiveName = null
+                    dependencyPath = "${dependencyProject.buildDir}/../"
+                    println "DependencyPath: " + dependencyPath
                 }
 
                 processDependency(dependency, archiveName, dependencyPath)
