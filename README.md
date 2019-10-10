@@ -39,5 +39,9 @@ Android组件化的过程和文档记录
 - 综述，建议使用[fataar-gradle-plugin](https://github.com/Mobbeel/fataar-gradle-plugin)进行修改，毕竟是支持高版本的gradle，
 满足编译速度和业务需求。
 
+## 解决合并Manifest问题
+- [fat-aar-android](https://github.com/kezong/fat-aar-android) 测试可用
+- [fat-aar-2019](https://github.com/top2015/fat-aar-2019)
+
 ## Issue
 [问题列表](./Issue.md)
