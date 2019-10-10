@@ -1,6 +1,7 @@
 package com.mobbeel.plugin
 
 import com.mobbeel.plugin.task.CopyDependenciesTask
+import com.android.build.gradle.tasks.InvokeManifestMerger
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.api.Task
@@ -23,12 +24,13 @@ class DependencyProcessorPlugin implements Plugin<Project> {
         this.extension = project.extensions.create("aarPlugin", PluginExtension)
 
         project.parent.buildscript.getConfigurations().getByName("classpath").getDependencies().each { Dependency dep ->
-            if (dep.name == "gradle") {
+            if (dep.group == "com.android.tools.build" && dep.name == "gradle") {
                 gradleVersion = dep.version
             }
         }
 
         project.afterEvaluate {
+            project.configurations.api.canBeResolved = true
             project.android.libraryVariants.all { variant ->
                 variant.outputs.all {
                     archiveAarName = outputFileName
@@ -40,14 +42,15 @@ class DependencyProcessorPlugin implements Plugin<Project> {
                 String rsCompiledDirPath = "${copyTask.temporaryDir.path}/rs-compiled/"
                 String sourceAarPath = "${copyTask.temporaryDir.path}/${variant.name}/"
 
+                def assembleTask = project.tasks.findByPath("assemble${variant.name.capitalize()}")
+                def mergeTask = mergeManifest(variant, copyTask.temporaryDir.path)
                 def compileRsTask = R2ClassTask(variant, rsDirPath, rsCompiledDirPath)
                 def rsJarTask = bundleRJarTask(variant, rsCompiledDirPath, sourceAarPath)
                 def aarTask = bundleFinalAAR(variant, sourceAarPath)
 
-                def assembleTask = project.tasks.findByPath("assemble${variant.name.capitalize()}")
-
                 assembleTask.finalizedBy(copyTask)
-                copyTask.finalizedBy(compileRsTask)
+                copyTask.finalizedBy(mergeTask)
+                mergeTask.finalizedBy(compileRsTask)
                 compileRsTask.finalizedBy(rsJarTask)
                 rsJarTask.finalizedBy(aarTask)
             }
@@ -103,6 +106,32 @@ class DependencyProcessorPlugin implements Plugin<Project> {
             it.archiveName = archiveAarName
             it.destinationDir(project.file(project.projectDir.path + "/build/outputs/aar/"))
         })
+    }
+
+    Task mergeManifest(def variant, String path) {
+//        Class invokeManifestTaskClazz = null
+//        String className = 'com.android.build.gradle.tasks.InvokeManifestMerger'
+//        try {
+//            invokeManifestTaskClazz = Class.forName(className)
+//        } catch (ClassNotFoundException ignored) {
+//        }
+//        if (invokeManifestTaskClazz == null) {
+//            throw new RuntimeException("Can not find class ${className}!")
+//        }
+        Task manifestsMergeTask = project.tasks.create('merge' + variant.name.capitalize() + 'Manifest', InvokeManifestMerger.class)
+        manifestsMergeTask.setVariantName(variant.name)
+        manifestsMergeTask.setMainManifestFile(new File(path+ "/AndroidManifest.xml"))
+        List<File> list = new ArrayList<>()
+        project.configurations.api.resolvedConfiguration.firstLevelModuleDependencies.each {
+            it.moduleArtifacts.each {
+                if (it.type == "aar") {
+                    list.add(new File(path + "/${it.name}_zip/AndroidManifest.xml"))
+                }
+            }
+        }
+        manifestsMergeTask.setSecondaryManifestFiles(list)
+        manifestsMergeTask.setOutputFile(new File(path + "/${variant.name}/AndroidManifest.xml"))
+        return manifestsMergeTask
     }
 
     static class PluginExtension {
