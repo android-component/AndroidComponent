@@ -1,6 +1,7 @@
 apply plugin: 'com.android.library'
 //apply from: '../fat-aar.gradle'
-apply plugin: 'com.mobbeel.plugin'
+//apply plugin: 'com.mobbeel.plugin'
+apply plugin: 'com.kezong.fat-aar'
 
 android {
     compileSdkVersion 28
@@ -33,14 +34,14 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
-    api project(path: ':comp-featureA', configuration: 'default')
-    api project(path: ':comp-featureB', configuration: 'default')
-    api project(path: ':libp-image', configuration: 'default')
-    api project(path: ':lib-image', configuration: 'default')
-    api project(path: ':lib-base', configuration: 'default')
+    embed project(path: ':comp-featureA', configuration: 'default')
+    embed project(path: ':comp-featureB', configuration: 'default')
+    embed project(path: ':libp-image', configuration: 'default')
+    embed project(path: ':lib-image', configuration: 'default')
+    embed project(path: ':lib-base', configuration: 'default')
 }
 
-aarPlugin {
-    includeAllInnerDependencies true
+//aarPlugin {
+//    includeAllInnerDependencies true
 //    packagesToInclude = ["component"]
-}
+//}
